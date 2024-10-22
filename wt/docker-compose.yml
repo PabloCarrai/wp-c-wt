@@ -1,0 +1,24 @@
+services:
+  watchtower:
+    image: containrrr/watchtower:latest
+    container_name: watchtower
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WATCHTOWER_CLEANUP=${WATCHTOWER_CLEANUP}
+      - WATCHTOWER_INCLUDE_RESTARTING=${WATCHTOWER_INCLUDE_RESTARTING}
+      - WATCHTOWER_INCLUDE_STOPPED=${WATCHTOWER_INCLUDE_STOPPED}
+      - WATCHTOWER_REVIVE_STOPPED=${WATCHTOWER_REVIVE_STOPPED}
+      - WATCHTOWER_NO_RESTART=${WATCHTOWER_NO_RESTART}
+      - WATCHTOWER_TIMEOUT=${WATCHTOWER_TIMEOUT}
+      - WATCHTOWER_SCHEDULE=${WATCHTOWER_SCHEDULE}
+      - WATCHTOWER_DEBUG=${WATCHTOWER_DEBUG}
+      - WATCHTOWER_LABEL_ENABLE=${WATCHTOWER_LABEL_ENABLE}
+      - WATCHTOWER_NOTIFICATION_URL=${WATCHTOWER_NOTIFICATION_URL}
+      - TZ=${TZ}
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
