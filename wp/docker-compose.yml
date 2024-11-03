@@ -4,7 +4,7 @@ services:
     image: mariadb
     container_name: db
     env_file:
-      - ./.env-wp
+      - ./.envwp
     volumes:
       - './db_data:/var/lib/mysql'
     restart: always 
@@ -23,7 +23,7 @@ services:
       - db
     image: 'wordpress:latest'
     env_file:
-      - ./.env-wp
+      - ./.envwp
     container_name: wp
     volumes:
       - './html:/var/www/html'
